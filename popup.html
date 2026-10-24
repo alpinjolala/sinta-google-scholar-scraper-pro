@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SINTA & Scholar Scraper Pro</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="app-title">Scholar & SINTA</h1>
+          <p class="app-subtitle">Publication Scraper Pro</p>
+        </div>
+      </div>
+      <span class="badge-version">v2.0 PRO</span>
+    </header>
+
+    <!-- Platform Target Detection Card -->
+    <div id="targetCard" class="card target-card">
+      <div class="target-status">
+        <span id="targetDot" class="status-dot dot-idle"></span>
+        <span id="targetTitle" class="target-title">Memeriksa Halaman...</span>
+      </div>
+      <div id="targetDetails" class="target-details">
+        <div id="authorInfo" class="author-info" style="display: none;">
+          <strong id="authorName">-</strong>
+          <span id="authorMeta" class="author-meta">-</span>
+        </div>
+        <div id="targetHelp" class="target-help">
+          Buka halaman profil <b>Google Scholar</b> atau <b>SINTA</b> untuk memulai ekstraksi data publikasi.
+        </div>
+      </div>
+      <div id="quickLinks" class="quick-links" style="display: none;">
+        <button id="btnOpenSinta" class="btn-link">Buka SINTA</button>
+        <button id="btnOpenScholar" class="btn-link">Buka Scholar</button>
+      </div>
+    </div>
+
+    <!-- Scrape Settings Section -->
+    <section id="configSection" class="config-section">
+      <!-- Page Range Setting -->
+      <div class="form-group">
+        <label class="form-label">
+          <svg class="label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Jangkauan Halaman
+        </label>
+        <div class="radio-pill-group">
+          <label class="radio-pill">
+            <input type="radio" name="pageScope" value="all" checked />
+            <span>Semua Hal.</span>
+          </label>
+          <label class="radio-pill">
+            <input type="radio" name="pageScope" value="single" />
+            <span>Hal. Aktif</span>
+          </label>
+          <label class="radio-pill">
+            <input type="radio" name="pageScope" value="range" />
+            <span>Rentang</span>
+          </label>
+        </div>
+
+        <div id="rangeInputs" class="range-inputs" style="display: none;">
+          <div class="range-col">
+            <span>Dari Hal.</span>
+            <input type="number" id="startPage" min="1" value="1" />
+          </div>
+          <div class="range-separator">-</div>
+          <div class="range-col">
+            <span>Sampai Hal.</span>
+            <input type="number" id="endPage" min="1" value="3" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Specific Platform Options -->
+      <div id="scholarOptions" class="platform-options" style="display: none;">
+        <label class="form-label">Mode Scholar</label>
+        <div class="radio-card-group">
+          <label class="radio-card">
+            <input type="radio" name="scholarMode" value="fast" checked />
+            <div class="radio-card-content">
+              <span class="card-title">⚡ Cepat (Tabel Profil)</span>
+              <span class="card-desc">Judul, Penulis, Jurnal, Tahun, Sitasi. Selesai dalam hitungan detik.</span>
+            </div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="scholarMode" value="deep" />
+            <div class="radio-card-content">
+              <span class="card-title">🔍 Mendalam (Detail & Abstrak)</span>
+              <span class="card-desc">Membuka tiap tautan untuk Abstrak, Penerbit, & Deskripsi lengkap.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div id="sintaOptions" class="platform-options" style="display: none;">
+        <label class="form-label">Cakupan Tab SINTA</label>
+        <div class="checkbox-box">
+          <label class="checkbox-label">
+            <input type="checkbox" id="sintaAllTabs" />
+            <span>Ekstrak Semua Tab Sekaligus (Scopus + Garuda + Scholar + WoS + Buku + HKI)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Filter Accordion -->
+      <details class="filter-accordion">
+        <summary class="filter-summary">
+          <span>⚙️ Filter & Opsi Lanjutan</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </summary>
+        <div class="accordion-content">
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label class="sub-label">Filter Minimal Tahun</label>
+              <input type="number" id="filterYearMin" placeholder="Misal: 2020" min="1970" max="2030" />
+            </div>
+            <div class="form-group flex-1">
+              <label class="sub-label">Pemisah CSV</label>
+              <select id="csvSeparator">
+                <option value=",">Koma ( , ) - Standar</option>
+                <option value=";">Titik Koma ( ; ) - Excel Indo</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sub-label">Kecepatan & Jeda Delay</label>
+            <select id="delayMode">
+              <option value="fast">⚡ Cepat (1 Detik)</option>
+              <option value="normal" selected>⚖️ Normal & Stabil (2 Detik)</option>
+              <option value="safe">🛡️ Aman / Anti-Bot (3-4 Detik)</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button id="btnStartScrape" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Mulai Ekstraksi Data
+        </button>
+      </div>
+    </section>
+
+    <!-- In-Progress Status Container -->
+    <div id="progressContainer" class="progress-container" style="display: none;">
+      <div class="progress-header">
+        <span id="progressTitle" class="progress-title">Sedang Mengekstrak...</span>
+        <span id="progressPercent" class="progress-percent">0%</span>
+      </div>
+      <div class="progress-bar-track">
+        <div id="progressBar" class="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+      <div id="progressStatusText" class="progress-status-text">Menyiapkan ekstraksi...</div>
+      
+      <div class="progress-actions">
+        <button id="btnPauseScrape" class="btn-secondary btn-sm">⏸️ Jeda</button>
+        <button id="btnStopScrape" class="btn-danger btn-sm">⏹️ Berhenti & Simpan</button>
+      </div>
+    </div>
+
+    <!-- Quick Utilities -->
+    <div class="util-footer">
+      <button id="btnCopyClipboard" class="btn-text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+        </svg>
+        Salin Hasil Terakhir
+      </button>
+      <span class="util-dot">•</span>
+      <button id="btnPreviewData" class="btn-text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        Pratinjau Data
+      </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

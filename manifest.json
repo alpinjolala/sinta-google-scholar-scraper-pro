@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "SINTA & Scholar Scraper Pro",
+  "version": "2.0.0",
+  "description": "Ekstraktor canggih data publikasi Google Scholar & SINTA (Scopus, Garuda, WoS, HKI, Buku) ke CSV/Excel, BibTeX, dan JSON.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://scholar.google.com/*",
+    "*://scholar.google.co.id/*",
+    "*://*.scholar.google.com/*",
+    "*://*.scholar.google.co.id/*",
+    "*://sinta.kemdiktisaintek.go.id/*",
+    "*://sinta.kemdikbud.go.id/*",
+    "*://*.kemdikbud.go.id/*",
+    "*://*.kemdiktisaintek.go.id/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://scholar.google.com/*",
+        "*://scholar.google.co.id/*",
+        "*://*.scholar.google.com/*",
+        "*://*.scholar.google.co.id/*",
+        "*://sinta.kemdiktisaintek.go.id/*",
+        "*://sinta.kemdikbud.go.id/*",
+        "*://*.kemdikbud.go.id/*",
+        "*://*.kemdiktisaintek.go.id/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
