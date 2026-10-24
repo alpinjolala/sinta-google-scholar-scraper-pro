@@ -7,8 +7,9 @@ Mendukung ekspor multi-format siap pakai: **CSV (Excel Ready UTF-8 BOM)**, **Exc
 ---
 
 ## ✨ Fitur-Fitur Unggulan Versi 2.0 (Pro Edition)
-
+![tampilan ekstensi](https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/tampilan-ekstensi.png)
 ### 1. 🎨 Antarmuka Modern & Heads-Up Display (HUD) Interaktif
+https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/tampilan-ekstensi.png
 * **Desain Popup Elegan:** Tampilan visual profesional berbasis palet *academic emerald*, responsif, dengan status live deteksi otomatis halaman profil peneliti.
 * **In-Page Floating HUD:** Selama proses berjalan, widget melayang muncul di halaman target yang menampilkan indikator persentase *real-time*, jumlah artikel terkumpul, serta tombol kendali langsung: **⏸️ Jeda (Pause)**, **▶️ Lanjut**, dan **⏹️ Selesai & Simpan**.
 * **Pratinjau Data Interaktif (Data Preview Modal):** Sebelum mengunduh, Anda dapat membuka tabel pratinjau langsung di dalam browser lengkap dengan fitur pencarian instan (*live search filter*).
@@ -24,6 +25,7 @@ Mendukung ekspor multi-format siap pakai: **CSV (Excel Ready UTF-8 BOM)**, **Exc
 ---
 
 ### 3. 🏛️ Ekstraksi SINTA Lengkap (Multi-Tab & Batch)
+![Proses ekstraksi](https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/proses-ekstraksi.png)
 * **Dukungan Seluruh Tab SINTA:**
   * **Scopus:** Ranking Quartile (Q1–Q4), Nama Jurnal, Penulis, Jumlah Sitasi, dan Link SINTA.
   * **Garuda:** Akreditasi Jurnal (SINTA 1 – SINTA 6), Link Tautan DOI asli, Penulis, dan Jumlah Sitasi.
@@ -89,6 +91,8 @@ Mendukung ekspor multi-format siap pakai: **CSV (Excel Ready UTF-8 BOM)**, **Exc
 8. Setelah selesai, file CSV akan otomatis terunduh, atau Anda dapat memilih format lain (**BibTeX**, **JSON**, atau **Salin ke Excel**).
 
 ---
+![Ekstraksi selesai](https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/ekstraksi-selesai.png)
+![Preview result](https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/preview-result.png)
 
 ## 🛡️ Lisensi & Etika Penggunaan
 
