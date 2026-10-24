@@ -9,7 +9,6 @@ Mendukung ekspor multi-format siap pakai: **CSV (Excel Ready UTF-8 BOM)**, **Exc
 ## ✨ Fitur-Fitur Unggulan Versi 2.0 (Pro Edition)
 ![tampilan ekstensi](https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/tampilan-ekstensi.png)
 ### 1. 🎨 Antarmuka Modern & Heads-Up Display (HUD) Interaktif
-https://github.com/alpinjolala/sinta-google-scholar-scraper-pro/blob/main/tampilan-ekstensi.png
 * **Desain Popup Elegan:** Tampilan visual profesional berbasis palet *academic emerald*, responsif, dengan status live deteksi otomatis halaman profil peneliti.
 * **In-Page Floating HUD:** Selama proses berjalan, widget melayang muncul di halaman target yang menampilkan indikator persentase *real-time*, jumlah artikel terkumpul, serta tombol kendali langsung: **⏸️ Jeda (Pause)**, **▶️ Lanjut**, dan **⏹️ Selesai & Simpan**.
 * **Pratinjau Data Interaktif (Data Preview Modal):** Sebelum mengunduh, Anda dapat membuka tabel pratinjau langsung di dalam browser lengkap dengan fitur pencarian instan (*live search filter*).
